@@ -6,12 +6,14 @@ CHROME_VERSIONS=(
     "google-chrome-beta"
     "google-chrome-unstable"
 )
-for version in "${CHROME_VERSIONS[@]}"; do
-    if [ -d "$HOME/.config/$version" ]; then
-        CHROME_VERSION="$version"
-        break
-    fi
-done
+if [ -z "$CHROME_VERSION" ]; then
+    for version in "${CHROME_VERSIONS[@]}"; do
+        if [ -d "$HOME/.config/$version" ]; then
+            CHROME_VERSION="$version"
+            break
+        fi
+    done
+fi
 if [ -z "$CHROME_VERSION" ]; then
     echo "unable to find Chrome version"
     exit 1
