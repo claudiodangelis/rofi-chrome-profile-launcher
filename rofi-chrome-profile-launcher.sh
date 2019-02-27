@@ -6,6 +6,7 @@ CHROME_VERSIONS=(
     "google-chrome-beta"
     "google-chrome-unstable"
 )
+
 if [ -z "$CHROME_VERSION" ]; then
     for version in "${CHROME_VERSIONS[@]}"; do
         if [ -d "$HOME/.config/$version" ]; then
@@ -14,15 +15,18 @@ if [ -z "$CHROME_VERSION" ]; then
         fi
     done
 fi
+
 if [ -z "$CHROME_VERSION" ]; then
     echo "unable to find Chrome version"
     exit 1
 fi
+
 CHROME_USER_DATA_DIR="$HOME/.config/$CHROME_VERSION"
 if [ ! -d "$CHROME_USER_DATA_DIR" ]; then
     echo "unable to find Chrome user data dir"
     exit 1
 fi
+
 DATA=$(python << END
 import json
 with open("$CHROME_USER_DATA_DIR/Local State") as f:
@@ -33,6 +37,7 @@ for profile in data["profile"]["info_cache"]:
     print("%s_____%s" % (profile, data["profile"]["info_cache"][profile]["name"]))
 END
 )
+
 declare -A profiles=()
 while read -r line
 do
