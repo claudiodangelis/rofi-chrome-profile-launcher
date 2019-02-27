@@ -1,6 +1,6 @@
 # rofi-chrome-profile-launcher
 
-A Chrome profile launcher [rofi](https://github.com/DaveDavenport/rofi).
+A Chrome profile launcher for [rofi](https://github.com/DaveDavenport/rofi).
 
 
 **Note**: requires `bash` and `python`.
