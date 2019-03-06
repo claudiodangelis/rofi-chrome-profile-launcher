@@ -63,5 +63,5 @@ if [ -z "$@" ]; then
 else
     # One argument passed, meaning that user selected a profile: launch Chrome
     NAME="${@}"
-    $CHROME_VERSION --profile-directory="${profiles[$NAME]}" &> /dev/null
+    $CHROME_VERSION --profile-directory="${profiles[$NAME]}" > /dev/null 2>&1
 fi
